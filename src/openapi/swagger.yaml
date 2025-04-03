@@ -1,0 +1,785 @@
+basePath: /api/v1
+definitions:
+  response.CreateProduct:
+    properties:
+      available_stock:
+        type: integer
+      category:
+        type: string
+      name:
+        type: string
+      price:
+        type: number
+      supplierID:
+        type: string
+    type: object
+  response.CreateSupplier:
+    properties:
+      address:
+        $ref: '#/definitions/response.CreateUpdateAddress'
+      name:
+        type: string
+      phone_number:
+        type: string
+    type: object
+  response.CreateUpdateAddress:
+    properties:
+      city:
+        type: string
+      country:
+        type: string
+      street:
+        type: string
+    type: object
+  response.CreateUser:
+    properties:
+      address:
+        $ref: '#/definitions/response.CreateUpdateAddress'
+      birthday:
+        type: string
+      gender:
+        type: string
+      name:
+        type: string
+      surname:
+        type: string
+    type: object
+  response.ProductResponse:
+    properties:
+      ID:
+        type: string
+      available_stock:
+        type: integer
+      category:
+        type: string
+      imageID:
+        type: string
+      lastUpdateDate:
+        type: string
+      name:
+        type: string
+      price:
+        type: number
+      supplierID:
+        type: string
+    type: object
+  response.SupplierResponse:
+    properties:
+      address:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      phone_number:
+        type: string
+    type: object
+  response.UploadUpdateImage:
+    properties:
+      image:
+        items:
+          type: integer
+        type: array
+      product_id:
+        type: string
+    type: object
+  response.UserResponse:
+    properties:
+      address:
+        type: string
+      birthday:
+        type: string
+      gender:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      registration_date:
+        type: string
+      surname:
+        type: string
+    type: object
+host: localhost:5000
+info:
+  contact: {}
+  description: Это API для управления пользователями, товарами и поставщиками.
+  title: API документация
+  version: "1.0"
+paths:
+  /image/{id}:
+    get:
+      description: Возвращает изображение по UUID
+      parameters:
+      - description: UUID изображения
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/octet-stream
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: file
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Получить изображение по его ID
+      tags:
+      - images
+  /image/create:
+    post:
+      consumes:
+      - application/json
+      description: Создаёт новое изображение и привязывает его к продукту
+      parameters:
+      - description: Данные изображения
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/response.UploadUpdateImage'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Создать изображение
+      tags:
+      - images
+  /image/delete/{id}:
+    delete:
+      description: Удаляет изображение по ID
+      parameters:
+      - description: UUID изображения
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Удалить изображение
+      tags:
+      - images
+  /image/product/{id}:
+    get:
+      description: Возвращает изображение по UUID продукта
+      parameters:
+      - description: UUID продукта
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/octet-stream
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: file
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Получить изображение по ID продукта
+      tags:
+      - images
+  /image/updateImage:
+    put:
+      consumes:
+      - application/json
+      description: Обновляет данные изображения по его ID
+      parameters:
+      - description: Обновленные данные изображения
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/response.UploadUpdateImage'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Обновить изображение
+      tags:
+      - images
+  /product/{id}:
+    get:
+      description: Возвращает информацию о товаре по его UUID
+      parameters:
+      - description: UUID товара
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ProductResponse'
+        "400":
+          description: Некорректный формат ID
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Ошибка при получении товара
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Получить товар по ID
+      tags:
+      - products
+  /product/create:
+    post:
+      consumes:
+      - application/json
+      description: Добавляет новый товар в систему
+      parameters:
+      - description: Данные товара
+        in: body
+        name: product
+        required: true
+        schema:
+          $ref: '#/definitions/response.CreateProduct'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Ошибка при разборе данных
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Ошибка при создании товара
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Создать товар
+      tags:
+      - products
+  /product/delete/{id}:
+    delete:
+      description: Удаляет товар по его UUID
+      parameters:
+      - description: UUID товара
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Неверный формат UUID
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Ошибка при удалении товара
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Удалить товар
+      tags:
+      - products
+  /product/productList:
+    get:
+      description: Возвращает список всех товаров
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/response.ProductResponse'
+            type: array
+        "404":
+          description: Ошибка при получении товаров
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Получить список товаров
+      tags:
+      - products
+  /product/updateQuantity:
+    patch:
+      description: Уменьшает количество указанного товара на складе
+      parameters:
+      - description: UUID товара
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: Количество для уменьшения
+        in: query
+        name: quantity
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Неверный формат UUID или количества
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Ошибка при уменьшении товара
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Уменьшить количество товара на складе
+      tags:
+      - products
+  /supplier/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Возвращает данные поставщика по его ID
+      parameters:
+      - description: UUID поставщика
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Данные поставщика
+          schema:
+            $ref: '#/definitions/response.SupplierResponse'
+        "400":
+          description: Некорректный UUID или отсутствует ID
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Ошибка при получении поставщика
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Получить поставщика
+      tags:
+      - suppliers
+  /supplier/create:
+    post:
+      consumes:
+      - application/json
+      description: Создает нового поставщика с указанным адресом
+      parameters:
+      - description: Данные нового поставщика
+        in: body
+        name: supplier
+        required: true
+        schema:
+          $ref: '#/definitions/response.CreateSupplier'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Поставщик успешно создан
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Ошибка в данных
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Не удалось создать поставщика
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Создать поставщика
+      tags:
+      - suppliers
+  /supplier/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Удаляет поставщика по его ID
+      parameters:
+      - description: UUID поставщика
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Поставщик успешно удалён
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Некорректный UUID поставщика
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Ошибка при удалении поставщика
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Удалить поставщика
+      tags:
+      - suppliers
+  /supplier/supplierList:
+    get:
+      consumes:
+      - application/json
+      description: Возвращает список всех поставщиков
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Список поставщиков
+          schema:
+            additionalProperties:
+              items:
+                $ref: '#/definitions/response.SupplierResponse'
+              type: array
+            type: object
+        "404":
+          description: Ошибка при получении списка
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Получить список поставщиков
+      tags:
+      - suppliers
+  /supplier/updateAddress/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Обновляет адрес поставщика по его ID
+      parameters:
+      - description: UUID поставщика
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Новый адрес поставщика
+        in: body
+        name: address
+        required: true
+        schema:
+          $ref: '#/definitions/response.CreateUpdateAddress'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Адрес успешно изменен
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Ошибка в данных или некорректный UUID
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Ошибка при обновлении адреса
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Обновить адрес поставщика
+      tags:
+      - suppliers
+  /user/create:
+    post:
+      consumes:
+      - application/json
+      description: Создает нового пользователя на основе переданных данных
+      parameters:
+      - description: Данные нового пользователя
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/response.CreateUser'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Пользователь успешно создан
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Ошибка в данных
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Ошибка сервера
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Создание пользователя
+      tags:
+      - users
+  /user/delete/{id}:
+    delete:
+      description: Удаляет пользователя по UUID
+      parameters:
+      - description: UUID пользователя
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Пользователь успешно удалён
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Неверный формат UUID
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Ошибка при удалении пользователя
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Удаление пользователя
+      tags:
+      - users
+  /user/updateAddress/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Изменяет адрес пользователя по UUID
+      parameters:
+      - description: UUID пользователя
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Новый адрес пользователя
+        in: body
+        name: address
+        required: true
+        schema:
+          $ref: '#/definitions/response.CreateUpdateAddress'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Адрес успешно изменен
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Ошибка в параметрах запроса
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Ошибка сервера
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Обновление адреса пользователя
+      tags:
+      - users
+  /user/users:
+    get:
+      description: Возвращает список пользователей, отфильтрованных по имени и фамилии
+      parameters:
+      - description: Имя пользователя
+        in: query
+        name: name
+        required: true
+        type: string
+      - description: Фамилия пользователя
+        in: query
+        name: surname
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Список пользователей
+          schema:
+            additionalProperties:
+              items:
+                $ref: '#/definitions/response.UserResponse'
+              type: array
+            type: object
+        "400":
+          description: Ошибка в параметрах запроса
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Ошибка сервера
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Получение списка пользователей по имени и фамилии
+      tags:
+      - users
+  /user/usersList:
+    get:
+      description: Возвращает список пользователей с возможностью пагинации
+      parameters:
+      - description: Количество пользователей на странице (по умолчанию 20)
+        in: query
+        name: limit
+        type: integer
+      - description: Смещение (по умолчанию 0)
+        in: query
+        name: offset
+        type: integer
+      responses:
+        "200":
+          description: Список пользователей и флаг has_more
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Ошибка в параметрах запроса
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Ошибка сервера
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Получение списка пользователей с пагинацией
+      tags:
+      - users
+swagger: "2.0"

@@ -1,0 +1,1241 @@
+{
+	"info": {
+		"_postman_id": "26213b52-5ebb-4357-9502-15d5bd90481d",
+		"name": "Backend2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42120328"
+	},
+	"item": [
+		{
+			"name": "CreateUser1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"pm.test(\"Сохранение ID пользователя\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set(\"user_id1\", jsonData.id);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Анна\",\n  \"surname\": \"Сидорова\",\n  \"birthday\": \"1995-08-20\",\n  \"gender\": \"Female\",\n  \"address\": {\n    \"country\": \"Россия\",\n    \"city\": \"Москва\",\n    \"street\": \"Тверская, 12\"\n  }\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/user/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateUser2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"pm.test(\"Сохранение ID пользователя\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set(\"user_id2\", jsonData.id);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Анна\",\n  \"surname\": \"Сидорова\",\n  \"birthday\": \"1995-08-20\",\n  \"gender\": \"Female\",\n  \"address\": {\n    \"country\": \"Россия\",\n    \"city\": \"Казань\",\n    \"street\": \"Тверская, 12\"\n  }\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/user/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateUser3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"pm.test(\"Сохранение ID пользователя\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set(\"user_id3\", jsonData.id);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Иван\",\n  \"surname\": \"Петров\",\n  \"birthday\": \"1988-11-15\",\n  \"gender\": \"Male\",\n  \"address\": {\n    \"country\": \"Россия\",\n    \"city\": \"Москва\",\n    \"street\": \"Арбат, 23\"\n  }\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/user/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateUser4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"pm.test(\"Сохранение ID пользователя\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set(\"user_id4\", jsonData.id);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Екатерина\",\n  \"surname\": \"Кузнецова\",\n  \"birthday\": \"1992-06-05\",\n  \"gender\": \"Female\",\n  \"address\": {\n    \"country\": \"Россия\",\n    \"city\": \"Санкт-Петербург\",\n    \"street\": \"Невский проспект, 45\"\n  }\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/user/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateUser5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"pm.test(\"Сохранение ID пользователя\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set(\"user_id5\", jsonData.id);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Дмитрий\",\n  \"surname\": \"Васильев\",\n  \"birthday\": \"1990-02-28\",\n  \"gender\": \"Male\",\n  \"address\": {\n    \"country\": \"Россия\",\n    \"city\": \"Екатеринбург\",\n    \"street\": \"Ленина, 10\"\n  }\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/user/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/v1/user/delete/{{user_id4}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"delete",
+						"{{user_id4}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUsers1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/v1/user/users?name=Анна&surname=Сидорова",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"users"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Анна"
+						},
+						{
+							"key": "surname",
+							"value": "Сидорова"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUsers2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/v1/user/users?name=Дмитрий&surname=Васильев",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"users"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Дмитрий"
+						},
+						{
+							"key": "surname",
+							"value": "Васильев"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUsersList1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/v1/user/usersList?limit=2&offset=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"usersList"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "2"
+						},
+						{
+							"key": "offset",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUsersList2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/v1/user/usersList",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"usersList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateUserAddress",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"country\": \"Россия\",\n  \"city\": \"Москва\",\n  \"street\": \"Тверская, 12\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/user/updateAddress/{{user_id1}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"updateAddress",
+						"{{user_id1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateSupplier1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"pm.test(\"Сохранение ID поставщика\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set(\"supplier_id1\", jsonData.id);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Supplier 1\",\n  \"address\": {\n    \"street\": \"Main St\",\n    \"city\": \"Moscow\",\n    \"zip\": \"12345\"\n  },\n  \"phone_number\": \"123-456-7890\"\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/supplier/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"supplier",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateSupplier2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"pm.test(\"Сохранение ID поставщика\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set(\"supplier_id2\", jsonData.id);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Supplier 2\",\n  \"address\": {\n    \"street\": \"Elm St\",\n    \"city\": \"Saint Petersburg\",\n    \"zip\": \"54321\"\n  },\n  \"phone_number\": \"987-654-3210\"\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/supplier/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"supplier",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateSupplier3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"pm.test(\"Сохранение ID поставщика\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set(\"supplier_id3\", jsonData.id);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Supplier 3\",\n  \"address\": {\n    \"street\": \"Ocean Drive\",\n    \"city\": \"Novosibirsk\",\n    \"zip\": \"67890\"\n  },\n  \"phone_number\": \"111-222-3333\"\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/supplier/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"supplier",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateSupplierAddress",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"street\": \"New Street\",\n  \"city\": \"New City\",\n  \"street\": \"00000\"\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/supplier/updateAddress/{{supplier_id1}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"supplier",
+						"updateAddress",
+						"{{supplier_id1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteSupplier",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/v1/supplier/delete/{{supplier_id2}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"supplier",
+						"delete",
+						"{{supplier_id2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetSupplierList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/v1/supplier/supplierList",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"supplier",
+						"supplierList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetSupplier",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/v1/supplier/{{supplier_id1}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"supplier",
+						"{{supplier_id1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateProduct1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"pm.test(\"Сохранение ID продукта\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set(\"product_id1\", jsonData.id);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Product1\",\n  \"category\": \"Tech\",\n  \"price\": 11.3,\n  \"available_stock\": 500,\n  \"supplierID\": \"{{supplier_id1}}\"\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/product/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateProduct2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"pm.test(\"Сохранение ID продукта\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set(\"product_id2\", jsonData.id);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Product2\",\n  \"category\": \"Food\",\n  \"price\": 110.0,\n  \"available_stock\": 1000,\n  \"supplierID\": \"{{supplier_id3}}\"\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/product/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ReduceStock",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/product/updateQuantity?id={{product_id1}}&quantity=50",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"updateQuantity"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "{{product_id1}}"
+						},
+						{
+							"key": "quantity",
+							"value": "50"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetProduct",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/product/{{product_id1}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"{{product_id1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetProdcutList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/product/productList",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"productList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteProduct",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Product1\",\n  \"category\": \"Tech\",\n  \"price\": 11.3,\n  \"available_stock\": 500,\n  \"supplierID\": \"{{supplier_id1}}\"\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/product/delete/{{product_id2}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"delete",
+						"{{product_id2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateImage",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"pm.test(\"Сохранение ID изображения\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set(\"image_id1\", jsonData.id);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"product_id\": \"{{product_id1}}\",\n    \"image\": \"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\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/image/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"image",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateImage",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"product_id\": \"{{product_id1}}\",\n    \"image\": \"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\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/image/updateImage",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"image",
+						"updateImage"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetImage",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/v1/image/{{image_id1}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"image",
+						"{{image_id1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetImageByProductId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/v1/image/product/{{product_id1}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"image",
+						"product",
+						"{{product_id1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteImage",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"product_id\": \"{{product_id1}}\",\n    \"image\": \"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\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/image/delete/{{image_id1}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"image",
+						"delete",
+						"{{image_id1}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "user_id1",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "user_id2",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
